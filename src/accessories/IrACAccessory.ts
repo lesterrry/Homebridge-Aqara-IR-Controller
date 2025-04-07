@@ -41,21 +41,6 @@ export class IrACAccessory extends AbstractAccessory {
       .onGet(this.handleTemperatureDisplayUnitsGet.bind(this))
       .onSet(this.handleTemperatureDisplayUnitsSet.bind(this));
 
-    this._primaryService.getCharacteristic(this.Characteristic.CoolingThresholdTemperature)
-      .setProps({
-        minValue: 10,
-        maxValue: 30,
-        minStep : 1,
-      });
-
-    this._primaryService.getCharacteristic(this.Characteristic.HeatingThresholdTemperature)
-      .setProps({
-        minValue: 10,
-        maxValue: 30,
-        minStep : 1,
-      });
-
-
     this._getAqaraInfo(this.data.did).then((state) => {
       this._state = state;
     });
