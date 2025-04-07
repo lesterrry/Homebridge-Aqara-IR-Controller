@@ -33,7 +33,6 @@ export class AqaraIrControllerPlatform implements DynamicPlatformPlugin {
       appId  : config.appId,
       keyId  : config.keyId,
       appKey : config.appKey,
-      version: config.version,
     });
 
     this._aqara.accessToken = config.accessToken && config.accessToken.length ? config.accessToken : undefined;
@@ -66,8 +65,10 @@ export class AqaraIrControllerPlatform implements DynamicPlatformPlugin {
               irAC.push(device);
             }
           });
+
+          this.log.debug(`Total ACs found: ${irAC.length}`);
         }, (err) => {
-          this.log.debug(err.message);
+          this.log.error(err);
         })
         .then(() => {
           const promises: Promise<any>[] = [];

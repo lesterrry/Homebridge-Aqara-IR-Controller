@@ -1,28 +1,28 @@
 {
-  "displayName": "Homebridge Aqara IR Controller",
-  "name": "homebridge-aqara-ir-controller",
-  "version": "1.0.4",
+  "displayName": "Homebridge Aqara IR Controller Lite",
+  "name": "homebridge-aqara-ir-controller-lite",
+  "version": "2.0.0",
   "description": "A simple plugin that exposes Aqara Ir AC control as a Thermostat",
   "license": "MIT",
-  "homepage": "https://github.com/Vaxter/Homebridge-Aqara-IR-Controller",
+  "homepage": "https://github.com/lesterrry/Homebridge-Aqara-IR-Controller",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Vaxter/Homebridge-Aqara-IR-Controller.git"
+    "url": "https://github.com/lesterrry/Homebridge-Aqara-IR-Controller.git"
   },
   "bugs": {
-    "url": "https://github.com/Vaxter/Homebridge-Aqara-IR-Controller/issues"
+    "url": "https://github.com/lesterrry/Homebridge-Aqara-IR-Controller/issues"
   },
-  "author": "vaxter",
+  "author": "lesterrry",
   "engines": {
-    "node": "^18.20.4 || ^20.18.0 || ^22.10.0",
-    "homebridge": "^1.8.0 || ^2.0.0-beta.0"
+    "node": ">=10.17.0",
+    "homebridge": ">=1.0.0"
   },
   "main": "dist/index.js",
   "scripts": {
-    "build": "rimraf ./dist && tsc && mv ./dist/ui ./dist/homebridge-ui && mkdir ./dist/homebridge-ui/public && cp -r ./src/ui/public/* ./dist/homebridge-ui/public/",
+    "build": "rimraf ./dist && tsc",
     "lint": "eslint . --max-warnings=0",
     "prepublishOnly": "npm run lint && npm run build",
-    "watch": "npm run build && npm link && nodemon"
+    "watch": "npm run build && npm link --registry https://registry.npmjs.org && nodemon"
   },
   "keywords": [
     "homebridge-plugin",
@@ -31,13 +31,11 @@
     "ac"
   ],
   "dependencies": {
-    "@homebridge/plugin-ui-utils": "^2.0.0",
     "axios": "^1.7.9",
     "homebridge-lib": "^7.1.0"
   },
   "devDependencies": {
-    "homebridge": "^2.0.0-beta.23",
-    "homebridge-config-ui-x": "^4.68.0",
+    "homebridge": "^1.2.2",
     "@eslint/js": "^9.14.0",
     "@types/eslint__js": "^8.42.3",
     "@types/node": "^22.8.6",

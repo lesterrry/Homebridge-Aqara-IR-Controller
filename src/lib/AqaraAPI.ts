@@ -19,8 +19,7 @@ export enum Language {
 
 export class Options {
   constructor(
-    public region: Region = Region.cn,
-    public version: string = 'v3.0',
+    public region: Region = Region.ru,
     public lang: Language = Language.en,
     public appId: string,
     public keyId: string,
@@ -88,7 +87,7 @@ export class AqaraAPI {
       case Region.us:
         return 'open-usa.aqara.com';
       default:
-        return 'open-cn.aqara.com';
+        return 'open-ru.aqara.com';
     }
   }
 
@@ -110,7 +109,7 @@ export class AqaraAPI {
   }
 
   get url() {
-    return `https://${this.apiDomain}/${this._options.version}/open/api`;
+    return `https://${this.apiDomain}/v3.0/open/api`;
   }
 
   private _buildConfig() {
@@ -174,7 +173,9 @@ export class AqaraAPI {
         return res.data;
       }
 
-      throw new Error(JSON.stringify(res.data));
+      console.log(res)
+
+      throw new Error(JSON.stringify({ attemptedIntent: intent, code: res.data.code }));
     });
   }
 

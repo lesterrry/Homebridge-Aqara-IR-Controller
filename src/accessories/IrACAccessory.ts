@@ -121,6 +121,8 @@ export class IrACAccessory extends AbstractAccessory {
   }
 
   private _getAqaraInfo(did: string): Promise<State> {
+    this.platform.log.warn('Fetching data from Aqara');
+
     return this.platform.aqara.call('query.ir.acState', {
       did,
     }).then(data => {
