@@ -56,7 +56,7 @@ function createSign(appId: string, keyId: string, nonce: string, time: string, a
  * @returns {string} The MD5 hash in hexadecimal format.
  */
 function md5(sourceStr: string): string {
-  return crypto.createHash('md5').update(sourceStr, 'utf-8').digest('hex');
+  return crypto.createHash('md5').update(sourceStr, 'utf8').digest('hex');
 }
 
 let instance: AqaraAPI;
@@ -114,7 +114,7 @@ export class AqaraAPI {
 
   private _buildConfig() {
 
-    const nonce = crypto.randomUUID();
+    const nonce = Math.random().toString(36).slice(2);
     const time = Date.now().toString();
 
     const headers: { [key: string]: string } = {
