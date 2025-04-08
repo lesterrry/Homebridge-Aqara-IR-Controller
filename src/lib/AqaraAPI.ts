@@ -19,8 +19,8 @@ export enum Language {
 
 export class Options {
   constructor(
-    public region: Region = Region.ru,
-    public lang: Language = Language.en,
+    public region: Region,
+    public lang: Language,
     public appId: string,
     public keyId: string,
     public appKey: string,
@@ -129,7 +129,7 @@ export class AqaraAPI {
         this._options.appKey,
         this._accessToken,
       ),
-      'Lang' : this._options.lang,
+      'Lang' : this._options.lang || 'en',
       'Time' : time,
     };
 
